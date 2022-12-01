@@ -136,7 +136,7 @@ public class FactorGame
 			for (int i = 2; i <= limit; i++) {
 				if (num % i == 0) {
 					// If num is a perfect square, don't add its sqrt twice
-					if (i < limit) {
+					if (i * i != num) {
 						ret.add(insertIdx, num / i);
 					}
 					ret.add(insertIdx, i);
