@@ -59,6 +59,36 @@ public class FactorGame
 	}
 	
 	/**
+	 * Copy constructor. Creates a new Factor Game in the same state as the
+	 * passed-in game.
+	 *
+	 * @param other The game to clone the state of.
+	 */
+	public FactorGame(FactorGame other)
+	{
+		this.score1 = other.score1;
+		this.score2 = other.score2;
+		this.board = new boolean[other.board.length];
+		System.arraycopy(other.board, 0, this.board, 0, this.board.length);
+		this.player1Turn = other.player1Turn;
+		this.penalty1 = other.penalty1;
+		this.penalty2 = other.penalty2;
+		this.penaltiesActive = other.penaltiesActive;
+	}
+	
+	/**
+	 * Returns {@code true} if it is player 1's turn and {@code false}
+	 * otherwise.
+	 *
+	 * @return {@code true} if it is player 1's turn and {@code false}
+	 * otherwise.
+	 */
+	public boolean isPlayer1Turn()
+	{
+		return this.player1Turn;
+	}
+	
+	/**
 	 * Returns {@code true} if the passed-in square is open and {@code false}
 	 * otherwise.
 	 *
@@ -217,6 +247,20 @@ public class FactorGame
 	}
 	
 	/**
+	 * Returns the result of this game, which is equal to player 1's score minus
+	 * player 2's score.
+	 * <p>
+	 * A positive result means that player 1 is winning or has won the game;
+	 * similarly, a negative result means that player 2 is winning or has won.
+	 *
+	 * @return The result of this game as described above.
+	 */
+	public int getResult()
+	{
+		return this.score1 - this.score2;
+	}
+	
+	/**
 	 * If the passed-in move is legal, makes that move and returns {@code true};
 	 * otherwise, leaves the game state unchanged and returns {@code false}.
 	 *
@@ -306,10 +350,10 @@ public class FactorGame
 			ret.append(String.format("Player %d to move.\n",
 					this.player1Turn ? 1 : 2));
 			if (this.penalty1) {
-				ret.append("Player 1 loses their next turn.\n");
+				ret.append("Player 1 loses their next turn.");
 			}
 			if (this.penalty2) {
-				ret.append("Player 2 loses their next turn.\n");
+				ret.append("Player 2 loses their next turn.");
 			}
 		}
 		return ret.toString();
