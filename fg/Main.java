@@ -9,8 +9,8 @@ public final class Main
 {
 	public static void main(String[] args)
 	{
-		GameHost game = new GameHost(new FactorGame(20, false),
-				new MinimaxPlayer(), new MinimaxPlayer());
+		GameHost game = new GameHost(new FactorGame(30, false),
+				new MinimaxPlayer(true), new MinimaxPlayer(true));
 		System.out.println("Game result: " + game.play(true));
 	}
 }
