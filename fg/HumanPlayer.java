@@ -1,7 +1,5 @@
 package fg;
 
-import java.util.Scanner;
-
 /**
  * Class representing a human player of the Factor Game.
  *
@@ -9,8 +7,6 @@ import java.util.Scanner;
  */
 public class HumanPlayer implements Player
 {
-	private static final Scanner in = new Scanner(System.in);
-	
 	@Override
 	public int selectMove(FactorGame game)
 	{
@@ -18,10 +14,10 @@ public class HumanPlayer implements Player
 			System.out.print("Enter move: ");
 			int move = 0;
 			try {
-				move = Integer.parseInt(in.nextLine());
+				move = Integer.parseInt(Main.in.nextLine());
 				// this second nextLine shouldn't be necessary, but there is a
 				// bug in the IDE that necessitates it
-				in.nextLine();
+				Main.in.nextLine();
 			} catch (NumberFormatException e) {
 				// do nothing
 			}
